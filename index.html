@@ -14,7 +14,7 @@
         .font-brand {
             font-family: 'Orbitron', sans-serif;
         }
-        /* Custom scrollbar */
+        /* Barra de rolagem personalizada */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -35,11 +35,9 @@
     <!-- Navbar -->
     <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent py-6">
         <div class="container mx-auto px-6 flex justify-between items-center">
-            <div class="flex items-center gap-2">
-                <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center font-bold text-xl rotate-12 shadow-lg shadow-blue-500/20">
-                    <span class="text-white">E</span>
-                </div>
-                <span class="font-brand text-xl font-bold tracking-tighter text-white">ETS <span class="text-blue-500">EDUCACIÓN</span></span>
+            <div class="flex items-center gap-3">
+                <!-- LOGO ETS CONFIGURADA -->
+                <img src="ets%20logo.png" alt="ETS Educación" class="h-10 w-auto object-contain">
             </div>
             
             <div class="hidden md:flex items-center gap-8 text-sm font-medium">
@@ -170,7 +168,7 @@
                         </p>
                         <div class="p-8 bg-blue-600/5 border border-blue-500/20 rounded-3xl backdrop-blur-sm">
                             <p class="text-white italic text-lg leading-relaxed">
-                                "Turbolager no solo es un socio, sino que formó parte activa de nuestra <strong>Inmersión Técnica en Brasil</strong>."
+                                "Turbolager no solo es un socio, sino que formó parte activa de nuestra <strong>Inmersión Técnica en Brasil</strong>, validando los métodos que hoy compartimos."
                             </p>
                         </div>
                     </div>
@@ -184,7 +182,7 @@
                                 <img src="https://images.unsplash.com/photo-1619641782842-833be2dede65?q=80&w=400&auto=format&fit=crop" class="rounded-2xl border border-blue-900/30 shadow-2xl" />
                                 <div class="bg-blue-600 aspect-square rounded-2xl flex flex-col items-center justify-center p-6 text-center shadow-xl shadow-blue-600/20">
                                     <span class="text-white font-brand font-bold text-4xl mb-2">ARG</span>
-                                    <p class="text-blue-100 text-[10px] font-bold uppercase tracking-widest">Validado en Argentina y Uruguay</p>
+                                    <p class="text-blue-100 text-[10px] font-bold uppercase tracking-widest">Validado en el mercado rioplatense</p>
                                 </div>
                             </div>
                         </div>
@@ -205,7 +203,7 @@
                     </p>
                 </div>
                 <div id="lessons-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
-                    <!-- Lessons injected by script -->
+                    <!-- Injetado via JS -->
                 </div>
             </div>
         </section>
@@ -223,7 +221,7 @@
                         <div class="space-y-6 text-slate-400 text-lg leading-relaxed">
                             <p>Director Técnico y socio de <strong>Turbo Sul</strong>, grupo líder con 39 años de trayectoria.</p>
                             <blockquote class="border-l-4 border-blue-600 pl-6 py-4 text-white italic font-medium bg-blue-600/5 rounded-r-2xl">
-                                "Tras 50,000 diagnósticos, he refinado el método definitivo."
+                                "Tras 50,000 diagnósticos, he refinado el método definitivo para que tu taller sea rentable hoy."
                             </blockquote>
                         </div>
                     </div>
@@ -234,7 +232,7 @@
         <!-- Pricing Section -->
         <section id="inscripcion" class="py-24 bg-gradient-to-b from-[#0a0f1d] to-[#050810]">
             <div class="container mx-auto px-6">
-                <div class="max-w-5xl mx-auto bg-[#0d1526] rounded-[3rem] border border-blue-900/50 overflow-hidden shadow-2xl">
+                <div class="max-w-5xl mx-auto bg-[#0d1526] rounded-[3rem] border border-blue-900/50 overflow-hidden shadow-2xl relative">
                     <div class="grid lg:grid-cols-5">
                         <div class="lg:col-span-3 p-10 md:p-16">
                             <h2 class="text-3xl md:text-5xl font-brand font-bold mb-6 text-white uppercase tracking-tighter">Oferta de <span class="text-blue-500">Lanzamiento</span></h2>
@@ -255,10 +253,14 @@
         </section>
     </main>
 
+    <!-- Footer -->
     <footer class="py-20 bg-[#050810] border-t border-blue-900/20 text-center">
         <div class="container mx-auto px-6">
-            <span class="font-brand text-xl font-bold tracking-tighter text-white">ETS <span class="text-blue-500">EDUCACIÓN</span></span>
-            <p class="text-slate-700 text-[10px] mt-8 uppercase tracking-widest">© 2024 ETS Educación. Todos los derechos reservados.</p>
+            <!-- LOGO ETS NO RODAPÉ (BRANCA) -->
+            <div class="flex items-center justify-center gap-3 mb-8">
+                <img src="ets%20logo.png" alt="ETS Educación" class="h-12 w-auto object-contain brightness-0 invert opacity-80">
+            </div>
+            <p class="text-slate-700 text-[10px] uppercase tracking-widest">© 2024 ETS Educación. Todos los derechos reservados.</p>
         </div>
     </footer>
 
