@@ -7,27 +7,13 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            scroll-behavior: smooth;
-        }
-        .font-brand {
-            font-family: 'Orbitron', sans-serif;
-        }
-        /* Barra de rolagem personalizada */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0a0f1d;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #1e293b;
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #2563eb;
-        }
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        .font-brand { font-family: 'Orbitron', sans-serif; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0a0f1d; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #2563eb; }
+        .lang-btn.active { background-color: #2563eb; color: white; border-color: #2563eb; }
     </style>
 </head>
 <body class="bg-[#0a0f1d] text-white selection:bg-blue-600 selection:text-white">
@@ -36,17 +22,23 @@
     <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent py-6">
         <div class="container mx-auto px-6 flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <!-- LOGO ETS CONFIGURADA -->
                 <img src="ets%20logo.png" alt="ETS Educación" class="h-10 w-auto object-contain">
             </div>
             
-            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
-                <a href="#metodo" class="text-slate-300 hover:text-white transition-colors">El Método</a>
-                <a href="#modulos" class="text-slate-300 hover:text-white transition-colors">Contenido</a>
-                <a href="#mentor" class="text-slate-300 hover:text-white transition-colors">Mentor</a>
-                <a href="#inscripcion" class="bg-blue-500 hover:bg-blue-400 text-white px-6 py-2.5 rounded-full transition-all shadow-lg shadow-blue-500/40 font-bold uppercase tracking-wider text-xs">
-                    ¡Inscribirme Ahora!
-                </a>
+            <div class="hidden md:flex items-center gap-6">
+                <!-- Seletor de Idiomas -->
+                <div class="flex bg-slate-900/50 border border-slate-700 p-1 rounded-full mr-4">
+                    <button onclick="changeLanguage('es')" id="btn-es" class="lang-btn active text-[10px] font-bold px-3 py-1 rounded-full transition-all">ES</button>
+                    <button onclick="changeLanguage('en')" id="btn-en" class="lang-btn text-slate-400 text-[10px] font-bold px-3 py-1 rounded-full transition-all hover:text-white">EN</button>
+                    <button onclick="changeLanguage('pt')" id="btn-pt" class="lang-btn text-slate-400 text-[10px] font-bold px-3 py-1 rounded-full transition-all hover:text-white">PT</button>
+                </div>
+
+                <div class="flex items-center gap-8 text-sm font-medium">
+                    <a href="#metodo" id="nav-metodo" class="text-slate-300 hover:text-white transition-colors">El Método</a>
+                    <a href="#modulos" id="nav-contenido" class="text-slate-300 hover:text-white transition-colors">Contenido</a>
+                    <a href="#mentor" id="nav-mentor" class="text-slate-300 hover:text-white transition-colors">Mentor</a>
+                    <a href="#inscripcion" id="nav-btn" class="bg-blue-500 hover:bg-blue-400 text-white px-6 py-2.5 rounded-full transition-all shadow-lg shadow-blue-500/40 font-bold uppercase tracking-wider text-xs">¡Inscribirme Ahora!</a>
+                </div>
             </div>
         </div>
     </nav>
@@ -57,61 +49,41 @@
             <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10 opacity-30">
                 <div class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-blue-900 blur-[140px] rounded-full"></div>
                 <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-blue-700 blur-[120px] rounded-full"></div>
-                <div class="absolute top-[20%] right-[10%] w-[20%] h-[20%] bg-blue-400/10 blur-[100px] rounded-full"></div>
             </div>
 
             <div class="container mx-auto px-6 text-center">
-                <div class="inline-block px-4 py-1.5 mb-6 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-400 text-sm font-bold tracking-widest uppercase">
+                <div id="hero-badge" class="inline-block px-4 py-1.5 mb-6 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-400 text-sm font-bold tracking-widest uppercase">
                     Masterclass Internacional 2024
                 </div>
                 
-                <h1 class="text-4xl md:text-7xl font-brand font-bold mb-8 leading-tight tracking-tight text-white uppercase">
+                <h1 id="hero-title" class="text-4xl md:text-7xl font-brand font-bold mb-8 leading-tight tracking-tight text-white uppercase">
                     Del Diagnóstico al <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-blue-600">LUCRO</span>
                 </h1>
                 
-                <p class="text-lg md:text-2xl text-slate-400 max-w-4xl mx-auto mb-10 leading-relaxed">
+                <p id="hero-sub" class="text-lg md:text-2xl text-slate-400 max-w-4xl mx-auto mb-10 leading-relaxed">
                     Domina la nueva ola de vehículos turboalimentados. Deja de adivinar y conviértete en un <strong>técnico de referencia</strong> con resultados reales en tu taller.
                 </p>
 
                 <div class="flex flex-col md:flex-row gap-4 justify-center items-center">
-                    <a href="#inscripcion" class="w-full md:w-auto px-10 py-5 bg-blue-500 hover:bg-blue-400 text-white rounded-xl font-bold text-lg transition-all transform hover:scale-105 shadow-2xl shadow-blue-500/40 border-b-4 border-blue-700">
+                    <a href="#inscripcion" id="hero-btn-main" class="w-full md:w-auto px-10 py-5 bg-blue-500 hover:bg-blue-400 text-white rounded-xl font-bold text-lg transition-all transform hover:scale-105 shadow-2xl shadow-blue-500/40 border-b-4 border-blue-700 uppercase">
                         QUIERO EMPEZAR AHORA
                     </a>
-                    <a href="#metodo" class="w-full md:w-auto px-10 py-5 border border-slate-700 hover:bg-slate-800 text-slate-300 rounded-xl font-bold text-lg transition-all">
+                    <a href="#metodo" id="hero-btn-sec" class="w-full md:w-auto px-10 py-5 border border-slate-700 hover:bg-slate-800 text-slate-300 rounded-xl font-bold text-lg transition-all">
                         Ver el Método "Siga el Flujo"
                     </a>
                 </div>
 
+                <!-- Video Placeholder -->
                 <div class="mt-16 relative max-w-4xl mx-auto">
                     <div class="aspect-video bg-slate-900 rounded-3xl border border-blue-900/50 overflow-hidden shadow-2xl relative group">
                         <div class="absolute inset-0 bg-blue-950/40 z-10"></div>
-                        <img 
-                            src="https://images.unsplash.com/photo-1486006396113-ad7302ff172c?q=80&w=1200&auto=format&fit=crop" 
-                            alt="Especialista en turbos" 
-                            class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700"
-                        />
+                        <img src="https://images.unsplash.com/photo-1486006396113-ad7302ff172c?q=80&w=1200&auto=format&fit=crop" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700" />
                         <div class="absolute inset-0 flex items-center justify-center z-20">
                             <button class="w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center shadow-xl hover:bg-blue-500 transition-colors animate-pulse border-4 border-white/10">
-                                <svg class="w-10 h-10 text-white fill-current ml-1" viewBox="0 0 24 24">
-                                    <path d="M8 5v14l11-7z" />
-                                </svg>
+                                <svg class="w-10 h-10 text-white fill-current ml-1" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
                             </button>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Quality Markers -->
-        <section class="py-12 bg-[#0d1526] border-y border-blue-900/20">
-            <div class="container mx-auto px-6">
-                <p class="text-center text-blue-900 text-[10px] font-brand uppercase tracking-[0.5em] mb-10 font-bold">Tecnología y Precisión Internacional</p>
-                <div class="flex flex-wrap justify-center gap-8 md:gap-20 items-center opacity-40 grayscale hover:grayscale-0 transition-all duration-700">
-                    <span class="font-brand text-xl font-bold text-slate-400">GARRETT</span>
-                    <span class="font-brand text-xl font-bold text-slate-400">BORGWARNER</span>
-                    <span class="font-brand text-xl font-bold text-slate-400">HOLSET</span>
-                    <span class="font-brand text-xl font-bold text-slate-400">IHI TURBO</span>
-                    <span class="font-brand text-xl font-bold text-slate-400">MITSUBISHI</span>
                 </div>
             </div>
         </section>
@@ -120,72 +92,24 @@
         <section id="metodo" class="py-24 bg-[#0a0f1d]">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-5xl font-brand font-bold mb-6 text-white">¿Por qué este es el <span class="text-blue-500">Último Curso</span> que necesitas?</h2>
-                    <p class="text-slate-400 text-lg max-w-3xl mx-auto">
-                        El mercado diesel ligero es la mayor oportunidad de negocio de los próximos años. Quien domine el turbo, domina el taller.
-                    </p>
+                    <h2 id="feat-main-title" class="text-3xl md:text-5xl font-brand font-bold mb-6 text-white uppercase">¿Por qué este es el <span class="text-blue-500">Último Curso</span> que necesitas?</h2>
+                    <p id="feat-main-sub" class="text-slate-400 text-lg max-w-3xl mx-auto">El mercado diesel ligero es la mayor oportunidad de negocio de los próximos años. Quien domine el turbo, domina el taller.</p>
                 </div>
-
                 <div class="grid lg:grid-cols-3 gap-8">
                     <div class="p-10 rounded-[2rem] bg-slate-900/50 border border-blue-900/30 hover:border-blue-500/50 transition-all group">
-                        <div class="w-14 h-14 bg-blue-600/10 rounded-2xl flex items-center justify-center text-blue-500 text-2xl mb-8 group-hover:bg-blue-600 group-hover:text-white transition-all">
-                            🛠️
-                        </div>
-                        <h3 class="text-2xl font-bold mb-4 text-white font-brand leading-tight">Diagnósticos por Adivinanza</h3>
-                        <p class="text-slate-400 leading-relaxed">Dejas de perder dinero cambiando piezas innecesarias esperando que el problema se solucione.</p>
+                        <div class="w-14 h-14 bg-blue-600/10 rounded-2xl flex items-center justify-center text-blue-500 text-2xl mb-8 group-hover:bg-blue-600 group-hover:text-white transition-all">🛠️</div>
+                        <h3 id="feat-1-title" class="text-2xl font-bold mb-4 text-white font-brand leading-tight">Diagnósticos por Adivinanza</h3>
+                        <p id="feat-1-desc" class="text-slate-400 leading-relaxed">Dejas de perder dinero cambiando piezas innecesarias esperando que el problema se solucione.</p>
                     </div>
                     <div class="p-10 rounded-[2rem] bg-slate-900/50 border border-blue-900/30 hover:border-blue-500/50 transition-all group">
-                        <div class="w-14 h-14 bg-blue-600/10 rounded-2xl flex items-center justify-center text-blue-500 text-2xl mb-8 group-hover:bg-blue-600 group-hover:text-white transition-all">
-                            📈
-                        </div>
-                        <h3 class="text-2xl font-bold mb-4 text-white font-brand leading-tight">El 'Miedo' al Biturbo</h3>
-                        <p class="text-slate-400 leading-relaxed">Domina sistemas complejos que otros mecánicos rechazan, cobrando lo que realmente vale tu trabajo.</p>
+                        <div class="w-14 h-14 bg-blue-600/10 rounded-2xl flex items-center justify-center text-blue-500 text-2xl mb-8 group-hover:bg-blue-600 group-hover:text-white transition-all">📈</div>
+                        <h3 id="feat-2-title" class="text-2xl font-bold mb-4 text-white font-brand leading-tight">El 'Miedo' al Biturbo</h3>
+                        <p id="feat-2-desc" class="text-slate-400 leading-relaxed">Domina sistemas complejos que otros mecánicos rechazan, cobrando lo que realmente vale tu trabalho.</p>
                     </div>
                     <div class="p-10 rounded-[2rem] bg-slate-900/50 border border-blue-900/30 hover:border-blue-500/50 transition-all group">
-                        <div class="w-14 h-14 bg-blue-600/10 rounded-2xl flex items-center justify-center text-blue-500 text-2xl mb-8 group-hover:bg-blue-600 group-hover:text-white transition-all">
-                            ⚡
-                        </div>
-                        <h3 class="text-2xl font-bold mb-4 text-white font-brand leading-tight">Baja Facturación</h3>
-                        <p class="text-slate-400 leading-relaxed">Pasa de ser un 'cambiapiezas' a un consultor técnico especializado en alta potencia.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Partnership Section -->
-        <section class="py-24 bg-[#0d1526] border-y border-blue-900/10">
-            <div class="container mx-auto px-6">
-                <div class="flex flex-col lg:flex-row items-center gap-16">
-                    <div class="lg:w-1/2">
-                        <div class="inline-block px-4 py-1 bg-blue-600/20 text-blue-400 rounded-full text-xs font-bold mb-6 tracking-widest border border-blue-500/20 uppercase">
-                            Alianza Internacional
-                        </div>
-                        <h2 class="text-4xl md:text-5xl font-brand font-bold mb-8 leading-tight text-white uppercase tracking-tighter">
-                            Referencia en <span class="text-blue-500">Argentina</span>
-                        </h2>
-                        <p class="text-slate-400 text-xl mb-8 leading-relaxed">
-                            Nos enorgullece nuestra alianza estratégica con <strong>Turbolager</strong>, el máximo referente en el mercado argentino de turbocompresores.
-                        </p>
-                        <div class="p-8 bg-blue-600/5 border border-blue-500/20 rounded-3xl backdrop-blur-sm">
-                            <p class="text-white italic text-lg leading-relaxed">
-                                "Turbolager no solo es un socio, sino que formó parte activa de nuestra <strong>Inmersión Técnica en Brasil</strong>, validando los métodos que hoy compartimos."
-                            </p>
-                        </div>
-                    </div>
-                    <div class="lg:w-1/2 relative">
-                        <div class="grid grid-cols-2 gap-4">
-                            <div class="space-y-4 pt-8">
-                                <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=400&auto=format&fit=crop" class="rounded-2xl border border-blue-900/30 shadow-2xl" />
-                                <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=400&auto=format&fit=crop" class="rounded-2xl border border-blue-900/30 shadow-2xl" />
-                            </div>
-                            <div class="space-y-4">
-                                <img src="https://images.unsplash.com/photo-1619641782842-833be2dede65?q=80&w=400&auto=format&fit=crop" class="rounded-2xl border border-blue-900/30 shadow-2xl" />
-                                <div class="bg-blue-600 aspect-square rounded-2xl flex flex-col items-center justify-center p-6 text-center shadow-xl shadow-blue-600/20">
-                                    <span class="text-white font-brand font-bold text-4xl mb-2">ARG</span>
-                                    <p class="text-blue-100 text-[10px] font-bold uppercase tracking-widest">Validado en el mercado rioplatense</p>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="w-14 h-14 bg-blue-600/10 rounded-2xl flex items-center justify-center text-blue-500 text-2xl mb-8 group-hover:bg-blue-600 group-hover:text-white transition-all">⚡</div>
+                        <h3 id="feat-3-title" class="text-2xl font-bold mb-4 text-white font-brand leading-tight">Baja Facturación</h3>
+                        <p id="feat-3-desc" class="text-slate-400 leading-relaxed">Pasa de ser un 'cambiapiezas' a un consultor técnico especializado en alta potencia.</p>
                     </div>
                 </div>
             </div>
@@ -195,15 +119,11 @@
         <section id="modulos" class="py-24 bg-[#0a0f1d] relative overflow-hidden">
             <div class="container mx-auto px-6 relative z-10">
                 <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-5xl font-brand font-bold mb-6 text-white uppercase tracking-tighter">
-                        Del Diagnóstico al <span class="text-blue-500">Lucro</span>
-                    </h2>
-                    <p class="text-slate-400 max-w-2xl mx-auto text-lg">
-                        15 Clases de alto nivel con enfoque en el mercado rioplatense.
-                    </p>
+                    <h2 id="mod-title" class="text-3xl md:text-5xl font-brand font-bold mb-6 text-white uppercase tracking-tighter">Del Diagnóstico al <span class="text-blue-500">Lucro</span></h2>
+                    <p id="mod-sub" class="text-slate-400 max-w-2xl mx-auto text-lg">15 Clases de alto nivel con enfoque en el mercado internacional.</p>
                 </div>
                 <div id="lessons-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
-                    <!-- Injetado via JS -->
+                    <!-- Gerado via JS -->
                 </div>
             </div>
         </section>
@@ -216,11 +136,11 @@
                         <img src="https://images.unsplash.com/photo-1590650153855-d9e808231d41?q=80&w=800&auto=format&fit=crop" class="rounded-[3rem] shadow-2xl relative z-10 border border-blue-900/50" />
                     </div>
                     <div class="max-w-xl">
-                        <p class="text-blue-500 font-bold tracking-[0.3em] uppercase mb-4 text-xs">Director Técnico & Socio</p>
+                        <p id="mentor-badge" class="text-blue-500 font-bold tracking-[0.3em] uppercase mb-4 text-xs">Director Técnico & Socio</p>
                         <h2 class="text-4xl md:text-5xl font-brand font-bold mb-8 text-white uppercase tracking-tighter">Marcus Einloft Pereira</h2>
                         <div class="space-y-6 text-slate-400 text-lg leading-relaxed">
-                            <p>Director Técnico y socio de <strong>Turbo Sul</strong>, grupo líder con 39 años de trayectoria.</p>
-                            <blockquote class="border-l-4 border-blue-600 pl-6 py-4 text-white italic font-medium bg-blue-600/5 rounded-r-2xl">
+                            <p id="mentor-desc">Director Técnico y socio de <strong>Turbo Sul</strong>, grupo líder con 39 años de trayectoria.</p>
+                            <blockquote id="mentor-quote" class="border-l-4 border-blue-600 pl-6 py-4 text-white italic font-medium bg-blue-600/5 rounded-r-2xl">
                                 "Tras 50,000 diagnósticos, he refinado el método definitivo para que tu taller sea rentable hoy."
                             </blockquote>
                         </div>
@@ -235,17 +155,17 @@
                 <div class="max-w-5xl mx-auto bg-[#0d1526] rounded-[3rem] border border-blue-900/50 overflow-hidden shadow-2xl relative">
                     <div class="grid lg:grid-cols-5">
                         <div class="lg:col-span-3 p-10 md:p-16">
-                            <h2 class="text-3xl md:text-5xl font-brand font-bold mb-6 text-white uppercase tracking-tighter">Oferta de <span class="text-blue-500">Lanzamiento</span></h2>
+                            <h2 id="price-title" class="text-3xl md:text-5xl font-brand font-bold mb-6 text-white uppercase tracking-tighter">Oferta de <span class="text-blue-500">Lanzamiento</span></h2>
                             <div class="space-y-6">
-                                <div class="flex items-center gap-4"><div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold">1</div><p class="text-white font-bold">9 Diagramas Exclusivos</p></div>
-                                <div class="flex items-center gap-4"><div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold">2</div><p class="text-white font-bold">Cuaderno de Actividades</p></div>
-                                <div class="flex items-center gap-4"><div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold">3</div><p class="text-white font-bold">Acceso VIP Aula Zoom</p></div>
+                                <div class="flex items-center gap-4"><div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold">1</div><p id="bonus-1" class="text-white font-bold">9 Diagramas Exclusivos</p></div>
+                                <div class="flex items-center gap-4"><div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold">2</div><p id="bonus-2" class="text-white font-bold">Cuaderno de Actividades</p></div>
+                                <div class="flex items-center gap-4"><div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold">3</div><p id="bonus-3" class="text-white font-bold">Acceso VIP Aula Zoom</p></div>
                             </div>
                         </div>
                         <div class="lg:col-span-2 bg-[#141d31] p-10 md:p-16 flex flex-col justify-center items-center text-center">
                             <p class="text-slate-500 line-through text-xl mb-2 font-medium">$197 USD</p>
                             <div class="mb-8"><span class="text-6xl font-brand font-bold text-white tracking-tighter">$97</span><span class="text-xl font-bold text-blue-500 ml-2">USD</span></div>
-                            <a href="#" class="w-full bg-blue-500 hover:bg-blue-400 text-white py-6 rounded-2xl font-brand font-bold text-xl transition-all shadow-2xl shadow-blue-500/40 transform hover:-translate-y-1 block">¡RESERVAR MI LUGAR!</a>
+                            <a href="#" id="price-btn" class="w-full bg-blue-500 hover:bg-blue-400 text-white py-6 rounded-2xl font-brand font-bold text-xl transition-all shadow-2xl shadow-blue-500/40 transform hover:-translate-y-1 block">¡RESERVAR MI LUGAR!</a>
                         </div>
                     </div>
                 </div>
@@ -253,21 +173,169 @@
         </section>
     </main>
 
-    <!-- Footer -->
     <footer class="py-20 bg-[#050810] border-t border-blue-900/20 text-center">
         <div class="container mx-auto px-6">
-            <!-- LOGO ETS NO RODAPÉ (BRANCA) -->
-            <div class="flex items-center justify-center gap-3 mb-8">
-                <img src="ets%20logo.png" alt="ETS Educación" class="h-12 w-auto object-contain brightness-0 invert opacity-80">
-            </div>
-            <p class="text-slate-700 text-[10px] uppercase tracking-widest">© 2024 ETS Educación. Todos los derechos reservados.</p>
+            <img src="ets%20logo.png" alt="ETS Educación" class="h-12 w-auto mx-auto mb-8 brightness-0 invert opacity-80">
+            <p id="footer-text" class="text-slate-700 text-[10px] uppercase tracking-widest">© 2024 ETS Educación. Todos los derechos reservados.</p>
         </div>
     </footer>
 
     <script>
+        // Sistema de Idiomas
+        let currentLang = 'es';
+
+        const translations = {
+            es: {
+                navMetodo: "El Método", navContenido: "Contenido", navMentor: "Mentor", navBtn: "¡Inscribirme Ahora!",
+                heroBadge: "Masterclass Internacional 2024",
+                heroTitle: "Del Diagnóstico al <span class='text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-blue-600'>LUCRO</span>",
+                heroSub: "Domina la nueva ola de vehículos turboalimentados. Deja de adivinar y conviértete en un <strong>técnico de referencia</strong> con resultados reales en tu taller.",
+                heroBtnMain: "QUIERO EMPEZAR AHORA", heroBtnSec: "Ver el Método 'Siga el Flujo'",
+                featMainTitle: "¿Por qué este es el <span class='text-blue-500'>Último Curso</span> que necesitas?",
+                featMainSub: "El mercado diesel ligero es la mayor oportunidad de negocio de los próximos años. Quien domine el turbo, domina el taller.",
+                feat1Title: "Diagnósticos por Adivinanza", feat1Desc: "Dejas de perder dinero cambiando piezas innecesarias esperando que el problema se solucione.",
+                feat2Title: "El 'Miedo' al Biturbo", feat2Desc: "Domina sistemas complejos que otros mecánicos rechazan, cobrando lo que realmente vale tu trabalho.",
+                feat3Title: "Baja Facturación", feat3Desc: "Pasa de ser un 'cambiapiezas' a un consultor técnico especializado en alta potencia.",
+                modTitle: "Del Diagnóstico al <span class='text-blue-500'>Lucro</span>", modSub: "15 Clases de alto nivel con enfoque en el mercado internacional.",
+                mentorBadge: "Director Técnico & Socio", mentorDesc: "Director Técnico y socio de <strong>Turbo Sul</strong>, grupo líder con 39 años de trajetória.",
+                mentorQuote: "\"Tras 50,000 diagnósticos, he refinado el método definitivo para que tu taller sea rentable hoy.\"",
+                priceTitle: "Oferta de <span class='text-blue-500'>Lanzamiento</span>", bonus1: "9 Diagramas Exclusivos", bonus2: "Cuaderno de Actividades", bonus3: "Acceso VIP Aula Zoom", priceBtn: "¡RESERVAR MI LUGAR!",
+                footerText: "© 2024 ETS Educación. Todos los derechos reservados.",
+                classLabel: "CLASE", practiceLabel: "Incluye Práctica"
+            },
+            en: {
+                navMetodo: "The Method", navContenido: "Content", navMentor: "Mentor", navBtn: "Join Now!",
+                heroBadge: "International Masterclass 2024",
+                heroTitle: "From Diagnosis to <span class='text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-blue-600'>PROFIT</span>",
+                heroSub: "Master the new wave of turbocharged vehicles. Stop guessing and become a <strong>top-tier technician</strong> with real results in your workshop.",
+                heroBtnMain: "I WANT TO START NOW", heroBtnSec: "See 'Follow the Flow' Method",
+                featMainTitle: "Why is this the <span class='text-blue-500'>Last Course</span> you need?",
+                featMainSub: "The light diesel market is the biggest business opportunity of the coming years. Whoever masters the turbo, masters the workshop.",
+                feat1Title: "Guesswork Diagnostics", feat1Desc: "Stop losing money by changing unnecessary parts hoping the problem will be solved.",
+                feat2Title: "Fear of Biturbo", feat2Desc: "Master complex systems that other mechanics reject, charging what your work is really worth.",
+                feat3Title: "Low Billing", feat3Desc: "Move from being a 'parts changer' to a technical consultant specializing in high performance.",
+                modTitle: "From Diagnosis to <span class='text-blue-500'>Profit</span>", modSub: "15 High-level classes focused on the international market.",
+                mentorBadge: "Technical Director & Partner", mentorDesc: "Technical Director and partner of <strong>Turbo Sul</strong>, a leading group with 39 years of experience.",
+                mentorQuote: "\"After 50,000 diagnoses, I have refined the ultimate method to make your workshop profitable today.\"",
+                priceTitle: "Launch <span class='text-blue-500'>Offer</span>", bonus1: "9 Exclusive Diagrams", bonus2: "Activity Workbook", bonus3: "VIP Zoom Class Access", priceBtn: "RESERVE MY SPOT!",
+                footerText: "© 2024 ETS Education. All rights reserved.",
+                classLabel: "CLASS", practiceLabel: "Includes Practice"
+            },
+            pt: {
+                navMetodo: "O Método", navContenido: "Conteúdo", navMentor: "Mentor", navBtn: "Inscrever-me Agora!",
+                heroBadge: "Masterclass Internacional 2024",
+                heroTitle: "Do Diagnóstico ao <span class='text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-blue-600'>LUCRO</span>",
+                heroSub: "Domine a nova onda de veículos turboalimentados. Pare de adivinhar e torne-se um <strong>técnico de referência</strong> com resultados reais na sua oficina.",
+                heroBtnMain: "QUERO COMEÇAR AGORA", heroBtnSec: "Ver o Método 'Siga o Fluxo'",
+                featMainTitle: "Por que este é o <span class='text-blue-500'>Último Curso</span> que você precisa?",
+                featMainSub: "O mercado diesel leve é a maior oportunidade de negócio dos próximos anos. Quem domina o turbo, domina a oficina.",
+                feat1Title: "Diagnósticos por Adivinhação", feat1Desc: "Pare de perder dinheiro trocando peças desnecessárias esperando que o problema seja resolvido.",
+                feat2Title: "O 'Medo' do Biturbo", feat2Desc: "Domine sistemas complexos que outros mecânicos rejeitam, cobrando o que o seu trabalho realmente vale.",
+                feat3Title: "Baixa Faturação", feat3Desc: "Passe de ser um 'trocador de peças' a um consultor técnico especializado em alta potência.",
+                modTitle: "Do Diagnóstico ao <span class='text-blue-500'>Lucro</span>", modSub: "15 Aulas de alto nível com foco no mercado internacional.",
+                mentorBadge: "Diretor Técnico & Sócio", mentorDesc: "Diretor Técnico e sócio da <strong>Turbo Sul</strong>, grupo líder com 39 anos de trajetória.",
+                mentorQuote: "\"Após 50.000 diagnósticos, refinei o método definitivo para que sua oficina seja rentável hoje.\"",
+                priceTitle: "Oferta de <span class='text-blue-500'>Lançamento</span>", bonus1: "9 Diagramas Exclusivos", bonus2: "Caderno de Atividades", bonus3: "Acesso VIP Aula Zoom", priceBtn: "RESERVAR MEU LUGAR!",
+                footerText: "© 2024 ETS Educação. Todos os direitos reservados.",
+                classLabel: "AULA", practiceLabel: "Inclui Prática"
+            }
+        };
+
+        const lessons = [
+            { id: "01", title: {es: "Diagnóstico de Potencia", en: "Power Diagnosis", pt: "Diagnóstico de Potência"}, hasPractice: false, topics: {es: ["Downsizing", "Relación Motor-Turbo"], en: ["Downsizing", "Engine-Turbo Relation"], pt: ["Downsizing", "Relação Motor-Turbo"]} },
+            { id: "02", title: {es: "Medición de Presión", en: "Pressure Measurement", pt: "Medição de Pressão"}, hasPractice: true, topics: {es: ["Analógica x Digital", "Práctica: Test de Rodaje"], en: ["Analog vs Digital", "Practice: Road Test"], pt: ["Analógica x Digital", "Prática: Teste de Rodagem"]} },
+            { id: "03", title: {es: "Componentes Principales", en: "Main Components", pt: "Componentes Principais"}, hasPractice: false, topics: {es: ["Caracol Caliente", "Carcasa Compresora"], en: ["Hot Housing", "Compressor Housing"], pt: ["Caracol Quente", "Carcaça Compressora"]} },
+            { id: "04", title: {es: "Flujos Térmicos", en: "Thermal Flows", pt: "Fluxos Térmicos"}, hasPractice: true, topics: {es: ["Intercooler", "Práctica: Método SIGA EL FLUJO"], en: ["Intercooler", "Practice: FOLLOW THE FLOW Method"], pt: ["Intercooler", "Prática: Método SIGA O FLUXO"]} },
+            { id: "05", title: {es: "Flujo de Aire Maestro", en: "Master Air Flow", pt: "Fluxo de Ar Maestro"}, hasPractice: false, topics: {es: ["Fugas", "Flujo Inverso"], en: ["Leaks", "Reverse Flow"], pt: ["Fugas", "Fluxo Inverso"]} },
+            { id: "06", title: {es: "Turbos con Wastegate", en: "Wastegate Turbos", pt: "Turbos com Wastegate"}, hasPractice: true, topics: {es: ["Vacío y Presión", "Práctica: Identificación"], en: ["Vacuum and Pressure", "Practice: Identification"], pt: ["Vácuo e Pressão", "Prática: Identificação"]} },
+            { id: "07", title: {es: "Geometría Variable (VGT)", en: "Variable Geometry (VGT)", pt: "Geometria Variável (VGT)"}, hasPractice: true, topics: {es: ["Posición de Potencia", "Práctica: Accionamiento"], en: ["Power Position", "Practice: Actuation"], pt: ["Posição de Potência", "Prática: Acionamento"]} },
+            { id: "08", title: {es: "Sistemas Biturbo", en: "Biturbo Systems", pt: "Sistemas Biturbo"}, hasPractice: true, topics: {es: ["Secuenciales vs Paralelos", "Práctica: Diagnósticos"], en: ["Sequential vs Parallel", "Practice: Diagnostics"], pt: ["Sequenciais vs Paralelos", "Prática: Diagnósticos"]} },
+            { id: "09", title: {es: "Sistemas de Control", en: "Control Systems", pt: "Sistemas de Controle"}, hasPractice: false, topics: {es: ["MAP e MAF", "Integración de Señales"], en: ["MAP and MAF", "Signal Integration"], pt: ["MAP e MAF", "Integração de Sinais"]} },
+            { id: "10", title: {es: "Solenoides de Presión", en: "Pressure Solenoids", pt: "Solenoides de Pressão"}, hasPractice: true, topics: {es: ["Overboost", "Práctica: Diagnóstico Real"], en: ["Overboost", "Practice: Real Diagnosis"], pt: ["Overboost", "Prática: Diagnóstico Real"]} },
+            { id: "11", title: {es: "Solenoides de Vacío", en: "Vacuum Solenoids", pt: "Solenoides de Vácuo"}, hasPractice: true, topics: {es: ["Medición Crítica", "Práctica: Test Vehículo"], en: ["Critical Measurement", "Practice: Vehicle Test"], pt: ["Medição Crítica", "Prática: Teste Veículo"]} },
+            { id: "12", title: {es: "Diagnósticos Maestros", en: "Master Diagnostics", pt: "Diagnósticos Mestres"}, hasPractice: false, topics: {es: ["3 Cases reales", "Metodología Rapidez"], en: ["3 Real cases", "Speed Methodology"], pt: ["3 Casos reais", "Metodologia Rapidez"]} },
+            { id: "13", title: {es: "Actuadores Electrónicos", en: "Electronic Actuators", pt: "Atuadores Eletrônicos"}, hasPractice: false, topics: {es: ["Control Electrónico", "Sensores PVF"], en: ["Electronic Control", "PVF Sensors"], pt: ["Controle Eletrônico", "Sensores PVF"]} },
+            { id: "14", title: {es: "Válvulas By-Pass", en: "By-Pass Valves", pt: "Válvulas By-Pass"}, hasPractice: true, topics: {es: ["Funcionamiento", "Práctica: Dicas de Oro"], en: ["Operation", "Practice: Golden Tips"], pt: ["Funcionamento", "Prática: Dicas de Ouro"]} },
+            { id: "15", title: {es: "Bono: Super Clase", en: "Bonus: Super Class", pt: "Bônus: Super Classe"}, hasPractice: false, topics: {es: ["Esquemas Exclusivos", "Guía Técnica Final"], en: ["Exclusive Schematics", "Final Tech Guide"], pt: ["Esquemas Exclusivos", "Guia Técnica Final"]} }
+        ];
+
+        function changeLanguage(lang) {
+            currentLang = lang;
+            const t = translations[lang];
+
+            // Navbar
+            document.getElementById('nav-metodo').innerText = t.navMetodo;
+            document.getElementById('nav-contenido').innerText = t.navContenido;
+            document.getElementById('nav-mentor').innerText = t.navMentor;
+            document.getElementById('nav-btn').innerText = t.navBtn;
+
+            // Hero
+            document.getElementById('hero-badge').innerText = t.heroBadge;
+            document.getElementById('hero-title').innerHTML = t.heroTitle;
+            document.getElementById('hero-sub').innerHTML = t.heroSub;
+            document.getElementById('hero-btn-main').innerText = t.heroBtnMain;
+            document.getElementById('hero-btn-sec').innerText = t.heroBtnSec;
+
+            // Features
+            document.getElementById('feat-main-title').innerHTML = t.featMainTitle;
+            document.getElementById('feat-main-sub').innerText = t.featMainSub;
+            document.getElementById('feat-1-title').innerText = t.feat1Title;
+            document.getElementById('feat-1-desc').innerText = t.feat1Desc;
+            document.getElementById('feat-2-title').innerText = t.feat2Title;
+            document.getElementById('feat-2-desc').innerText = t.feat2Desc;
+            document.getElementById('feat-3-title').innerText = t.feat3Title;
+            document.getElementById('feat-3-desc').innerText = t.feat3Desc;
+
+            // Modules Header
+            document.getElementById('mod-title').innerHTML = t.modTitle;
+            document.getElementById('mod-sub').innerText = t.modSub;
+
+            // Mentor
+            document.getElementById('mentor-badge').innerText = t.mentorBadge;
+            document.getElementById('mentor-desc').innerHTML = t.mentorDesc;
+            document.getElementById('mentor-quote').innerText = t.mentorQuote;
+
+            // Pricing
+            document.getElementById('price-title').innerHTML = t.priceTitle;
+            document.getElementById('bonus-1').innerText = t.bonus1;
+            document.getElementById('bonus-2').innerText = t.bonus2;
+            document.getElementById('bonus-3').innerText = t.bonus3;
+            document.getElementById('price-btn').innerText = t.priceBtn;
+
+            // Footer
+            document.getElementById('footer-text').innerText = t.footerText;
+
+            // Update UI Buttons
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active', 'bg-blue-600', 'text-white');
+                btn.classList.add('text-slate-400');
+            });
+            const activeBtn = document.getElementById(`btn-${lang}`);
+            activeBtn.classList.add('active', 'bg-blue-600', 'text-white');
+            activeBtn.classList.remove('text-slate-400');
+
+            renderLessons();
+        }
+
+        function renderLessons() {
+            const grid = document.getElementById('lessons-grid');
+            grid.innerHTML = '';
+            
+            lessons.forEach(lesson => {
+                const card = document.createElement('div');
+                card.className = 'group p-6 rounded-2xl bg-slate-900/40 border border-blue-900/20 hover:border-blue-500/40 transition-all duration-300 backdrop-blur-sm flex flex-col relative overflow-hidden text-left';
+                
+                let practiceBadge = lesson.hasPractice ? `<div class="absolute top-0 right-0 bg-blue-600 text-white text-[8px] font-bold px-3 py-1 rounded-bl-xl uppercase tracking-widest">${translations[currentLang].practiceLabel}</div>` : '';
+                const topicsHtml = lesson.topics[currentLang].map(topic => `<li class="text-xs flex items-center gap-2 text-slate-500"><span class="w-1 h-1 rounded-full bg-blue-900"></span>${topic}</li>`).join('');
+
+                card.innerHTML = `${practiceBadge}<span class="text-xs font-brand font-bold text-blue-500/50 mb-4">${translations[currentLang].classLabel} ${lesson.id}</span><h3 class="text-lg font-bold text-white mb-4 font-brand tracking-tight group-hover:text-blue-400 transition-colors">${lesson.title[currentLang]}</h3><ul class="space-y-2 mt-auto">${topicsHtml}</ul>`;
+                grid.appendChild(card);
+            });
+        }
+
         // Navbar Scroll Effect
-        const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
             if (window.scrollY > 50) {
                 navbar.classList.remove('bg-transparent', 'py-6');
                 navbar.classList.add('bg-[#0a0f1d]/90', 'backdrop-blur-md', 'py-3', 'shadow-xl', 'border-b', 'border-blue-900/30');
@@ -277,37 +345,8 @@
             }
         });
 
-        // Lessons Data
-        const lessons = [
-            { id: "01", title: "Diagnóstico de Potencia", hasPractice: false, topics: ["Downsizing", "Relación Motor-Turbo"] },
-            { id: "02", title: "Medición de Presión", hasPractice: true, topics: ["Analógica x Digital", "Práctica: Test de Rodaje"] },
-            { id: "03", title: "Componentes Principales", hasPractice: false, topics: ["Caracol Caliente", "Carcasa Compresora"] },
-            { id: "04", title: "Flujos Térmicos", hasPractice: true, topics: ["Intercooler", "Práctica: Método SIGA EL FLUJO"] },
-            { id: "05", title: "Flujo de Aire Maestro", hasPractice: false, topics: ["Fugas", "Flujo Inverso"] },
-            { id: "06", title: "Turbos con Wastegate", hasPractice: true, topics: ["Vacío y Presión", "Práctica: Identificación"] },
-            { id: "07", title: "Geometría Variable (VGT)", hasPractice: true, topics: ["Posición de Potencia", "Práctica: Accionamiento"] },
-            { id: "08", title: "Sistemas Biturbo", hasPractice: true, topics: ["Secuenciales vs Paralelos", "Práctica: Diagnósticos"] },
-            { id: "09", title: "Sistemas de Control", hasPractice: false, topics: ["MAP e MAF", "Integración de Señales"] },
-            { id: "10", title: "Solenoides de Presión", hasPractice: true, topics: ["Overboost", "Práctica: Diagnóstico Real"] },
-            { id: "11", title: "Solenoides de Vacío", hasPractice: true, topics: ["Medición Crítica", "Práctica: Test Vehículo"] },
-            { id: "12", title: "Diagnósticos Maestros", hasPractice: false, topics: ["3 Cases reales", "Metodología Rapidez"] },
-            { id: "13", title: "Actuadores Electrónicos", hasPractice: false, topics: ["Control Electrónico", "Sensores PVF"] },
-            { id: "14", title: "Válvulas By-Pass", hasPractice: true, topics: ["Funcionamiento", "Práctica: Dicas de Oro"] },
-            { id: "15", title: "Bono: Super Clase", hasPractice: false, topics: ["Esquemas Exclusivos", "Guía Técnica Final"] }
-        ];
-
-        const grid = document.getElementById('lessons-grid');
-        lessons.forEach(lesson => {
-            const card = document.createElement('div');
-            card.className = 'group p-6 rounded-2xl bg-slate-900/40 border border-blue-900/20 hover:border-blue-500/40 transition-all duration-300 backdrop-blur-sm flex flex-col relative overflow-hidden';
-            
-            let practiceBadge = lesson.hasPractice ? `<div class="absolute top-0 right-0 bg-blue-600 text-white text-[8px] font-bold px-3 py-1 rounded-bl-xl uppercase tracking-widest">Incluye Práctica</div>` : '';
-
-            const topicsHtml = lesson.topics.map(topic => `<li class="text-xs flex items-center gap-2 text-slate-500"><span class="w-1 h-1 rounded-full bg-blue-900"></span>${topic}</li>`).join('');
-
-            card.innerHTML = `${practiceBadge}<span class="text-xs font-brand font-bold text-blue-500/50 mb-4">CLASE ${lesson.id}</span><h3 class="text-lg font-bold text-white mb-4 font-brand tracking-tight group-hover:text-blue-400 transition-colors">${lesson.title}</h3><ul class="space-y-2 mt-auto">${topicsHtml}</ul>`;
-            grid.appendChild(card);
-        });
+        // Init
+        renderLessons();
     </script>
 </body>
 </html>
